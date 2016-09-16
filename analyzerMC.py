@@ -19,7 +19,7 @@ APPLYFSR=False #this is by far the slowest module (not counting SVFit so far)
 #TAUCUT="pt>15"
 #JETCUT="pt>15"
 
-USEPAIRMET=False # input to SVfit: true: MVA pair MET; false: PFmet (HF inclusion set using USE_NOHFMET)
+USEPAIRMET=True # input to SVfit: true: MVA pair MET; false: PFmet (HF inclusion set using USE_NOHFMET)
 APPLYMETCORR=False # flag to enable (True) and disable (False) Z-recoil corrections for MVA MET response and resolution
 USE_NOHFMET = False # True to exclude HF and run on silver json
 
@@ -79,7 +79,7 @@ process.source = cms.Source("PoolSource",
 #Limited nEv for testing purposes. -1 to run all events
 process.maxEvents.input = 50000
 #process.source.eventsToProcess = cms.untracked.VEventRange('1:34679')
-process.source.eventsToProcess = cms.untracked.VEventRange('1:34679','1:23719','1:98449','1:100935')
+#process.source.eventsToProcess = cms.untracked.VEventRange('1:34679','1:23719','1:98449','1:100935')
 
 # JSON mask for data --> defined in the lumiMask file
 # from JSON file
