@@ -5,6 +5,9 @@ import os
 from ROOT import gSystem, TChain, TSystem, TFile
 from PSet import process
 
+gSystem.CompileMacro('HTTEvent.cxx')
+gSystem.CompileMacro('ScaleFactor.cc')
+gSystem.CompileMacro('HTauTauTreeBase.C')
 gSystem.CompileMacro('HTauTauTree.C')
 
 from ROOT import HTauTauTree

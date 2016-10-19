@@ -9,6 +9,9 @@ from PSet import process
 command = "cmsRun -j FrameworkJobReport.xml -p PSet.py"
 os.system(command)
 
+gSystem.CompileMacro('HTTEvent.cxx')
+gSystem.CompileMacro('ScaleFactor.cc')
+gSystem.CompileMacro('HTauTauTreeBase.C')
 gSystem.CompileMacro('HTauTauTree.C')
 from ROOT import HTauTauTree
 
@@ -23,5 +26,3 @@ aROOTFile = TFile.Open(aFile)
 aTree = aROOTFile.Get("HTauTauTree/HTauTauTree")
 print "TTree entries: ",aTree.GetEntries()
 HTauTauTree(aTree).Loop()
-
-
