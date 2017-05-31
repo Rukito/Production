@@ -19,7 +19,7 @@ APPLYFSR=False #this is by far the slowest module (not counting SVFit so far)
 #TAUCUT="pt>15"
 #JETCUT="pt>15"
 
-USEPAIRMET=True # input to SVfit: true: MVA pair MET; false: PFmet (HF inclusion set using USE_NOHFMET)
+USEPAIRMET=False # input to SVfit: true: MVA pair MET; false: PFmet (HF inclusion set using USE_NOHFMET)
 APPLYMETCORR=True # flag to enable (True) and disable (False) Z-recoil corrections for MVA MET response and resolution
 USE_NOHFMET = False # True to exclude HF and run on silver json
 

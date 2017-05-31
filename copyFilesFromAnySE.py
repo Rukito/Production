@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, re, os, commands
+import sys, re, os, commands, time
 
 ##################
 def fileCopied(fileName):
@@ -39,9 +39,14 @@ def copyFilesFromSE(sourcePath,destinationPath, user):
                 if(fileCopied(destination)):
                     continue
                     
-                command = "lcg-cp -v  --vo cms -b -T srmv2 -U srmv2 "+endpoint+localPath+" "+destination
+                command = "lcg-cp -v  --vo cms -b -T srmv2 -U srmv2 "+endpoint+localPath+" "+destination + " &"
+                #command = "gfal-copy --force "+endpoint+localPath+" "+destination
                 print "Executing command: ",command
                 os.system(command)
+                command = "ps aux | grep lcg-cp"
+                while commands.getoutput(command).count("lcg-cp")>15:
+                    time.sleep(1)
+                
 
     #command = "srmls "+destinationPath+"/"+destDirectory
     #os.system(command)
@@ -63,7 +68,7 @@ destEndpoint = "file:./Data/"
 
 ##katalogi ktore checmy skopiowac
 directories = [
-    "/dpm/cis.gov.pl/home/cms/store/user/akalinow/v18/"
+    "/dpm/cis.gov.pl/home/cms/store/user/akalinow/v28/"
 ]
 
 ## Mozemy kopiowac zawartosc wielu katalogow. Pliki sa kopiowane do katalogow

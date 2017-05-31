@@ -25,7 +25,7 @@ USE_NOHFMET = False # True to exclude HF and run on silver json
 
 SVFITBYPASS=True # use SVFitBypass module, no SVfit computation, adds dummy userfloats for MET and SVfit mass
 BUILDONLYOS=False #If true don't create the collection of SS candidates (and thus don't run SV fit on them)
-APPLYTESCORRECTION=True # shift the central value of the tau energy scale before computing up/down variations
+APPLYTESCORRECTION=False # shift the central value of the tau energy scale before computing up/down variations
 COMPUTEUPDOWNSVFIT = True # compute SVfit for up/down TES variation
 
 IsMC=False

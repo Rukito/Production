@@ -94,6 +94,8 @@ class HTTEvent{
   void setNTracksInRefit(const int & nTracks) {nTracksInRefit = nTracks;};
 
   void setSelectionBit(SelectionBitsEnum iBit, bool value = true) {selectionWord.SetBitNumber((int)iBit, value);}
+
+  void setMET(const TVector2 &aVector) {met = aVector;}
   ////////////////////////
 
   ///Reset class data members
@@ -123,6 +125,8 @@ class HTTEvent{
   int getDecayModePlus() const {return decayModePlus;}
   
   int getDecayModeBoson() const {return decayModeBoson;}
+
+  TVector2 getMET() const {return met;}
   
   const TVector3 & getGenPV() const {return genPV;}
 
@@ -187,6 +191,9 @@ class HTTEvent{
 
   ///Bit word coding event selection result
   TBits selectionWord;
+  
+  //MET vector
+  TVector2 met;
 
 };
 ///////////////////////////////////////////////////
@@ -245,7 +252,6 @@ class HTTParticle{
 
   bool hasTriggerMatch(TriggerEnum index) const {return (unsigned int)getProperty(PropertyEnum::isGoodTriggerType)&(unsigned int)index &&
                                                         (unsigned int)getProperty(PropertyEnum::FilterFired)&(unsigned int)index;}
-
  private:
 
   ///Nominal particle four-momentum
@@ -303,6 +309,8 @@ class HTTPair{
 
   void setMuonTriggerSF(float aSF){muonTriggerSF = aSF;}
   
+  void setMETMatrix(float m00, float m01, float m10, float m11) {metMatrix.push_back(m00); metMatrix.push_back(m01); metMatrix.push_back(m10); metMatrix.push_back(m11);}
+  
   ///Data member getters.
   TLorentzVector getP4() const {return p4;}
 
@@ -331,6 +339,8 @@ class HTTPair{
   float getMTMuon() const {return abs(leg1.getPDGid())==13 ? getMTLeg1() : getMTLeg2(); }
 
   float getMuonTriggerSF() const {return muonTriggerSF;}
+  
+  std::vector<float> getMETMatrix() {return metMatrix;}
 
  private:
 
@@ -342,6 +352,9 @@ class HTTPair{
 
   ///MET vectors
   TVector2 met, metSVfit;
+  
+  //MVAMET covariance matrix in order 00,01,10,11
+  std::vector<float> metMatrix;
 
   ///MT calculated for (leg1,MET)
   float mtLeg1;
@@ -355,8 +368,6 @@ class HTTPair{
   ///Lepton selection scale factor
   float muonTriggerSF;
   ///Tau selection scale factor
-  
-  
 
 };
 
