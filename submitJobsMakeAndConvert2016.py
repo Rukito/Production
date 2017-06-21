@@ -54,7 +54,7 @@ def prepareCrabCfg(dataset,
     ##Modify CRAB3 configuration
     config.JobType.psetName = 'DUMMY'
     isWZH = False
-    if dataset.split("/")[2].find("JetsToLL")!=-1 or dataset.split("/")[2].find("JetsToLNu")!=-1 or dataset.split("/")[2].find("HToTauTau")!=-1:
+    if dataset.split("/")[1].find("JetsToLL")!=-1 or dataset.split("/")[1].find("JetsToLNu")!=-1 or dataset.split("/")[1].find("HToTauTau")!=-1:
         isWZH = True
     if isWZH:
         config.JobType.psetName = 'analyzerMC.py'
@@ -70,7 +70,7 @@ def prepareCrabCfg(dataset,
     config.General.requestName = shortName
 
     config.Data.inputDataset = dataset
-    config.Data.outLFNDirBase = '/store/user/akalinow/'+publish_data_suffix+"/"
+    config.Data.outLFNDirBase = '/store/user/apyskir/'+publish_data_suffix+"/"
     config.Data.outputDatasetTag = shortName
     config.Data.inputDBS = 'global'
     config.Data.splitting = 'EventAwareLumiBased'
@@ -97,7 +97,7 @@ def prepareCrabCfg(dataset,
     os.system("rm -f "+jsonFile.split("/")[-1])
 #########################################
 #########################################
-eventsPerJob = 100000 #Wjets and DYJets hardoced in code above
+eventsPerJob = 40000 #Wjets and DYJets hardoced in code above
 
 #eventsPerJob = 500000#4Mu analysis
 
@@ -106,29 +106,29 @@ from datasetsMoriond17 import datasets
 
 ##TEST
 datasets = [
-    "/SingleMuon/Run2016B-03Feb2017_ver2-v2/MINIAOD",
-    "/SingleMuon/Run2016C-03Feb2017-v1/MINIAOD",
-    "/SingleMuon/Run2016D-03Feb2017-v1/MINIAOD",
-    "/SingleMuon/Run2016E-03Feb2017-v1/MINIAOD",
-    "/SingleMuon/Run2016F-03Feb2017-v1/MINIAOD",
-    "/SingleMuon/Run2016G-03Feb2017-v1/MINIAOD",
-    "/SingleMuon/Run2016H-03Feb2017_ver2-v1/MINIAOD",
-    "/SingleMuon/Run2016H-03Feb2017_ver3-v1/MINIAOD",
+    #"/SingleMuon/Run2016B-03Feb2017_ver2-v2/MINIAOD",
+    #"/SingleMuon/Run2016C-03Feb2017-v1/MINIAOD",
+    #"/SingleMuon/Run2016D-03Feb2017-v1/MINIAOD",
+    #"/SingleMuon/Run2016E-03Feb2017-v1/MINIAOD",
+    #"/SingleMuon/Run2016F-03Feb2017-v1/MINIAOD",
+    #"/SingleMuon/Run2016G-03Feb2017-v1/MINIAOD",
+    #"/SingleMuon/Run2016H-03Feb2017_ver2-v1/MINIAOD",
+    #"/SingleMuon/Run2016H-03Feb2017_ver3-v1/MINIAOD",
     ####
     #"/Tau/Run2016B-03Feb2017_ver1-v1/MINIAOD",
-    "/Tau/Run2016B-03Feb2017_ver2-v2/MINIAOD",
-    "/Tau/Run2016C-03Feb2017-v1/MINIAOD",
-    "/Tau/Run2016D-03Feb2017-v1/MINIAOD",
-    "/Tau/Run2016E-03Feb2017-v1/MINIAOD",
-    "/Tau/Run2016F-03Feb2017-v1/MINIAOD",
-    "/Tau/Run2016G-03Feb2017-v1/MINIAOD",
-    "/Tau/Run2016H-03Feb2017_ver2-v1/MINIAOD",
-    "/Tau/Run2016H-03Feb2017_ver3-v1/MINIAOD",
+    #"/Tau/Run2016B-03Feb2017_ver2-v2/MINIAOD",
+    #"/Tau/Run2016C-03Feb2017-v1/MINIAOD",
+    #"/Tau/Run2016D-03Feb2017-v1/MINIAOD",
+    #"/Tau/Run2016E-03Feb2017-v1/MINIAOD",
+    #"/Tau/Run2016F-03Feb2017-v1/MINIAOD",
+    #"/Tau/Run2016G-03Feb2017-v1/MINIAOD",
+    #"/Tau/Run2016H-03Feb2017_ver2-v1/MINIAOD",
+    #"/Tau/Run2016H-03Feb2017_ver3-v1/MINIAOD",
     #"/SingleMuon/Run2016B-03Feb2017_ver2-v2/MINIAOD",
     #"/SingleMuon/Run2016C-03Feb2017-v1/MINIAOD",
     #"/SingleMuon/Run2016D-03Feb2017-v1/MINIAOD",
     #"/Tau/Run2016B-03Feb2017_ver2-v2/MINIAOD",
-    #"/VBFHToTauTau_M125_13TeV_powheg_pythia8/RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_reHLT_80X_mcRun2_asymptotic_v14-v1/MINIAODSIM",
+    "/VBFHToTauTau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"
     #"/SingleMuon/Run2016E-03Feb2017-v1/MINIAOD",
     #"/SingleMuon/Run2016F-03Feb2017-v1/MINIAOD",
     #"/SingleMuon/Run2016G-03Feb2017-v1/MINIAOD",
@@ -145,7 +145,7 @@ datasets = [
     #"/GluGluHToZZTo4L_M125_13TeV_powheg2_JHUgenV6_pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",      
 ##"/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v2/MINIAODSIM",
 #"/SUSYGluGluToBBHToTauTau_M-1000_TuneCUETP8M1_13TeV-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"
-    "/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v2/MINIAODSIM"
+    #"/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v2/MINIAODSIM"
 ]
 
 
@@ -164,7 +164,7 @@ if submitJobs:
                        eventsPerJob=eventsPerJob,
                        jsonFile=jsonFile2016,
                        storage_element="T2_PL_Swierk",
-                       publish_data_suffix = "v2_data")
+                       publish_data_suffix = "synch_file_6")
                        #publish_data_suffix = "v5_MSSM_Synch")
                        #publish_data_suffix = "4Mu_v5")                  
 ########################################################

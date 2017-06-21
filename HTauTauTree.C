@@ -18,6 +18,8 @@ bool HTauTauTree::pairSelection(unsigned int iPair){
   ///HTauTauNtuplizer.cc, MuFiller.cc, TauFiller.cc, EleFiller.cc
 
   if(!mothers_px->size()) return false;
+  
+  bool isSynch = true;
 
   int pdgIdLeg1 = PDGIdDaughters->at(indexDau1->at(iPair));
   int pdgIdLeg2 = PDGIdDaughters->at(indexDau2->at(iPair));
@@ -50,7 +52,12 @@ bool HTauTauTree::pairSelection(unsigned int iPair){
   int muonIdBit = 7;//Standard Medium ID
   if(RunNumber<278808 && RunNumber>100000) muonIdBit = 6;//ICHEP Medium MuonID
 
-  bool muonBaselineSelection =  muonP4.Pt()>19 && std::abs(muonP4.Eta())<2.4 &&
+  bool muonBaselineSelection =  muonP4.Pt()>19 && std::abs(muonP4.Eta())<2.1 &&
+				std::abs(dz->at(indexMuonLeg))<0.2 &&
+				std::abs(dxy->at(indexMuonLeg))<0.045 &&
+			       ((daughters_muonID->at(indexMuonLeg) & (1<<muonIdBit)) == (1<<muonIdBit));
+
+  if(isSynch) muonBaselineSelection =  muonP4.Pt()>23 && std::abs(muonP4.Eta())<2.4 &&
 				std::abs(dz->at(indexMuonLeg))<0.2 &&
 				std::abs(dxy->at(indexMuonLeg))<0.045 &&
 			       ((daughters_muonID->at(indexMuonLeg) & (1<<muonIdBit)) == (1<<muonIdBit));
@@ -80,6 +87,8 @@ bool HTauTauTree::pairSelection(unsigned int iPair){
   httEvent->setSelectionBit(SelectionBitsEnum::extraMuonVeto,thirdLeptonVeto(indexMuonLeg, indexTauLeg, 13));
   httEvent->setSelectionBit(SelectionBitsEnum::extraElectronVeto,thirdLeptonVeto(indexMuonLeg, indexTauLeg, 11));
 
+  if(isSynch) return muonBaselineSelection && tauBaselineSelection && baselinePair;
+  
   return muonBaselineSelection && tauBaselineSelection && baselinePair
     && postSynchTau && loosePostSynchMuon
     && !diMuonVeto() && !thirdLeptonVeto(indexMuonLeg, indexTauLeg, 13) && !thirdLeptonVeto(indexMuonLeg, indexTauLeg, 11)
