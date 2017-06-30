@@ -97,7 +97,7 @@ def prepareCrabCfg(dataset,
     os.system("rm -f "+jsonFile.split("/")[-1])
 #########################################
 #########################################
-eventsPerJob = 40000 #Wjets and DYJets hardoced in code above
+eventsPerJob = 10000 #Wjets and DYJets hardoced in code above
 
 #eventsPerJob = 500000#4Mu analysis
 
@@ -164,7 +164,7 @@ if submitJobs:
                        eventsPerJob=eventsPerJob,
                        jsonFile=jsonFile2016,
                        storage_element="T2_PL_Swierk",
-                       publish_data_suffix = "synch_file_6")
+                       publish_data_suffix = "synch_file_9")
                        #publish_data_suffix = "v5_MSSM_Synch")
                        #publish_data_suffix = "4Mu_v5")                  
 ########################################################

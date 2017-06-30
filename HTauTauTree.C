@@ -52,7 +52,7 @@ bool HTauTauTree::pairSelection(unsigned int iPair){
   int muonIdBit = 7;//Standard Medium ID
   if(RunNumber<278808 && RunNumber>100000) muonIdBit = 6;//ICHEP Medium MuonID
 
-  bool muonBaselineSelection =  muonP4.Pt()>19 && std::abs(muonP4.Eta())<2.1 &&
+  bool muonBaselineSelection =  muonP4.Pt()>20 && std::abs(muonP4.Eta())<2.1 &&
 				std::abs(dz->at(indexMuonLeg))<0.2 &&
 				std::abs(dxy->at(indexMuonLeg))<0.045 &&
 			       ((daughters_muonID->at(indexMuonLeg) & (1<<muonIdBit)) == (1<<muonIdBit));
@@ -62,7 +62,12 @@ bool HTauTauTree::pairSelection(unsigned int iPair){
 				std::abs(dxy->at(indexMuonLeg))<0.045 &&
 			       ((daughters_muonID->at(indexMuonLeg) & (1<<muonIdBit)) == (1<<muonIdBit));
 
-  bool tauBaselineSelection = tauP4.Pt()>20 && std::abs(tauP4.Eta())<2.3 &&
+  bool tauBaselineSelection = tauP4.Pt()>30 && std::abs(tauP4.Eta())<2.3 &&
+			      daughters_decayModeFindingOldDMs->at(indexTauLeg)>0.5 &&
+                              std::abs(dz->at(indexTauLeg))<0.2 &&
+                              std::abs(daughters_charge->at(indexTauLeg))==1;
+
+  if(isSynch) tauBaselineSelection = tauP4.Pt()>20 && std::abs(tauP4.Eta())<2.3 &&
 			      daughters_decayModeFindingOldDMs->at(indexTauLeg)>0.5 &&
                               std::abs(dz->at(indexTauLeg))<0.2 &&
                               std::abs(daughters_charge->at(indexTauLeg))==1;

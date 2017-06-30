@@ -20,7 +20,7 @@ APPLYFSR=False #this is by far the slowest module (not counting SVFit so far)
 #JETCUT="pt>15"
 
 USEMVAMET=False
-APPLYMETCORR=True # flag to enable (True) and disable (False) Z-recoil corrections
+APPLYMETCORR=False # flag to enable (True) and disable (False) Z-recoil corrections
 USE_NOHFMET = False # True to exclude HF and run on silver json
 
 SVFITBYPASS=True # use SVFitBypass module, no SVfit computation, adds dummy userfloats for MET and SVfit mass
