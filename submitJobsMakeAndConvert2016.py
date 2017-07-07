@@ -115,20 +115,19 @@ datasets = [
     #"/SingleMuon/Run2016H-03Feb2017_ver2-v1/MINIAOD",
     #"/SingleMuon/Run2016H-03Feb2017_ver3-v1/MINIAOD",
     ####
-    #"/Tau/Run2016B-03Feb2017_ver1-v1/MINIAOD",
-    #"/Tau/Run2016B-03Feb2017_ver2-v2/MINIAOD",
-    #"/Tau/Run2016C-03Feb2017-v1/MINIAOD",
-    #"/Tau/Run2016D-03Feb2017-v1/MINIAOD",
-    #"/Tau/Run2016E-03Feb2017-v1/MINIAOD",
-    #"/Tau/Run2016F-03Feb2017-v1/MINIAOD",
-    #"/Tau/Run2016G-03Feb2017-v1/MINIAOD",
-    #"/Tau/Run2016H-03Feb2017_ver2-v1/MINIAOD",
-    #"/Tau/Run2016H-03Feb2017_ver3-v1/MINIAOD",
+    "/Tau/Run2016B-03Feb2017_ver2-v2/MINIAOD",
+    "/Tau/Run2016C-03Feb2017-v1/MINIAOD",
+    "/Tau/Run2016D-03Feb2017-v1/MINIAOD",
+    "/Tau/Run2016E-03Feb2017-v1/MINIAOD",
+    "/Tau/Run2016F-03Feb2017-v1/MINIAOD",
+    "/Tau/Run2016G-03Feb2017-v1/MINIAOD",
+    "/Tau/Run2016H-03Feb2017_ver2-v1/MINIAOD",
+    "/Tau/Run2016H-03Feb2017_ver3-v1/MINIAOD",
     #"/SingleMuon/Run2016B-03Feb2017_ver2-v2/MINIAOD",
     #"/SingleMuon/Run2016C-03Feb2017-v1/MINIAOD",
     #"/SingleMuon/Run2016D-03Feb2017-v1/MINIAOD",
     #"/Tau/Run2016B-03Feb2017_ver2-v2/MINIAOD",
-    "/VBFHToTauTau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"
+    #"/VBFHToTauTau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"
     #"/SingleMuon/Run2016E-03Feb2017-v1/MINIAOD",
     #"/SingleMuon/Run2016F-03Feb2017-v1/MINIAOD",
     #"/SingleMuon/Run2016G-03Feb2017-v1/MINIAOD",
@@ -164,7 +163,7 @@ if submitJobs:
                        eventsPerJob=eventsPerJob,
                        jsonFile=jsonFile2016,
                        storage_element="T2_PL_Swierk",
-                       publish_data_suffix = "synch_file_10")
+                       publish_data_suffix = "v3_data_TT")
                        #publish_data_suffix = "v5_MSSM_Synch")
                        #publish_data_suffix = "4Mu_v5")                  
 ########################################################

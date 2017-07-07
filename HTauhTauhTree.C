@@ -19,7 +19,7 @@ bool HTauhTauhTree::pairSelection(unsigned int iPair){
 
   if(!mothers_px->size()) return false;
   
-  bool isSynch = true;
+  bool isSynch = false;
 
   int pdgIdLeg1 = PDGIdDaughters->at(indexDau1->at(iPair));
   int pdgIdLeg2 = PDGIdDaughters->at(indexDau2->at(iPair));
@@ -67,7 +67,7 @@ bool HTauhTauhTree::pairSelection(unsigned int iPair){
 			daughters_pz->at(indexLeg2),
 			daughters_e->at(indexLeg2));
 
-  bool tauBaselineSelection1 = tau1P4.Pt()>35 && std::abs(tau1P4.Eta())<2.1 &&
+  bool tauBaselineSelection1 = tau1P4.Pt()>50 && std::abs(tau1P4.Eta())<2.1 &&
                                daughters_decayModeFindingOldDMs->at(indexLeg1)>0.5 &&
                                std::abs(dz->at(indexLeg1))<0.2 &&
                                std::abs(daughters_charge->at(indexLeg1))==1;
@@ -77,7 +77,7 @@ bool HTauhTauhTree::pairSelection(unsigned int iPair){
                                std::abs(dz->at(indexLeg1))<0.2 &&
                                std::abs(daughters_charge->at(indexLeg1))==1;
                                
-  bool tauBaselineSelection2 = tau2P4.Pt()>35 && std::abs(tau2P4.Eta())<2.1 &&
+  bool tauBaselineSelection2 = tau2P4.Pt()>40 && std::abs(tau2P4.Eta())<2.1 &&
                                daughters_decayModeFindingOldDMs->at(indexLeg2)>0.5 &&
                                std::abs(dz->at(indexLeg2))<0.2 &&
                                std::abs(daughters_charge->at(indexLeg2))==1;
