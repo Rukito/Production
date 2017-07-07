@@ -67,7 +67,7 @@ else :
 ### ----------------------------------------------------------------------
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-        'file:/afs/cern.ch/work/a/apyskir/scratch/Data/0863B733-1A39-E611-AF47-0025905C53D8.root'
+        'file:/afs/cern.ch/work/a/apyskir/scratch/Data/testFiles/0E712644-6BC7-E611-A85D-1CB72C0A3DC5.root'
     )
 )
 
