@@ -18,6 +18,8 @@ bool HTauhTauhTree::pairSelection(unsigned int iPair){
   ///HTauTauNtuplizer.cc, MuFiller.cc, TauFiller.cc, EleFiller.cc
 
   if(!mothers_px->size()) return false;
+  
+  bool isSynch = true;
 
   int pdgIdLeg1 = PDGIdDaughters->at(indexDau1->at(iPair));
   int pdgIdLeg2 = PDGIdDaughters->at(indexDau2->at(iPair));
@@ -69,7 +71,18 @@ bool HTauhTauhTree::pairSelection(unsigned int iPair){
                                daughters_decayModeFindingOldDMs->at(indexLeg1)>0.5 &&
                                std::abs(dz->at(indexLeg1))<0.2 &&
                                std::abs(daughters_charge->at(indexLeg1))==1;
+
+  if(isSynch) tauBaselineSelection1 = tau1P4.Pt()>40 && std::abs(tau1P4.Eta())<2.1 &&
+                               daughters_decayModeFindingOldDMs->at(indexLeg1)>0.5 &&
+                               std::abs(dz->at(indexLeg1))<0.2 &&
+                               std::abs(daughters_charge->at(indexLeg1))==1;
+                               
   bool tauBaselineSelection2 = tau2P4.Pt()>35 && std::abs(tau2P4.Eta())<2.1 &&
+                               daughters_decayModeFindingOldDMs->at(indexLeg2)>0.5 &&
+                               std::abs(dz->at(indexLeg2))<0.2 &&
+                               std::abs(daughters_charge->at(indexLeg2))==1;
+
+  if(isSynch) tauBaselineSelection2 = tau2P4.Pt()>40 && std::abs(tau2P4.Eta())<2.1 &&
                                daughters_decayModeFindingOldDMs->at(indexLeg2)>0.5 &&
                                std::abs(dz->at(indexLeg2))<0.2 &&
                                std::abs(daughters_charge->at(indexLeg2))==1;
@@ -90,6 +103,8 @@ bool HTauhTauhTree::pairSelection(unsigned int iPair){
   httEvent->setSelectionBit(SelectionBitsEnum::postSynchTau,postSynchTau2);
   httEvent->setSelectionBit(SelectionBitsEnum::extraMuonVeto,thirdLeptonVeto(indexLeg1,indexLeg2,13));
   httEvent->setSelectionBit(SelectionBitsEnum::extraElectronVeto,thirdLeptonVeto(indexLeg1,indexLeg2,11));
+
+  if(isSynch) return tauBaselineSelection1 && tauBaselineSelection2 && baselinePair;
 
   return tauBaselineSelection1 && tauBaselineSelection2 && baselinePair
     && ( (postSynchLooseTau1 && postSynchMediumTau2) || (postSynchLooseTau2 && postSynchMediumTau1) )

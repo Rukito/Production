@@ -164,7 +164,7 @@ if submitJobs:
                        eventsPerJob=eventsPerJob,
                        jsonFile=jsonFile2016,
                        storage_element="T2_PL_Swierk",
-                       publish_data_suffix = "synch_file_9")
+                       publish_data_suffix = "synch_file_10")
                        #publish_data_suffix = "v5_MSSM_Synch")
                        #publish_data_suffix = "4Mu_v5")                  
 ########################################################
