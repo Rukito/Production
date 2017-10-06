@@ -64,8 +64,8 @@ bool HMuMuTree::pairSelection(unsigned int iPair){
   ///
   bool triggerSelection = (triggerbit & 1<<0) == (1<<0);
 
-  ///4Mu selection
   /*
+  ///4Mu selection  
   muonBaselineSelection1 = (mu1P4.Pt()>10 && std::abs(mu1P4.Eta())<2.4 &&	
 			    std::abs(dz->at(indexLeg1))<1 &&
 			    std::abs(dxy->at(indexLeg1))<0.5 &&
@@ -76,10 +76,15 @@ bool HMuMuTree::pairSelection(unsigned int iPair){
 			    std::abs(dxy->at(indexLeg2))<0.5 &&
 			    ((daughters_muonID->at(indexLeg2) & (1<<0)) == (1<<0)));//Loose muon
   
-  baselinePair = mu1P4.DeltaR(mu2P4) > 0.02;
-  */
+  baselinePair = mu1P4.DeltaR(mu2P4) > 0.02;  
   ////////////////
-  
+  ///1Mu selection
+  muonBaselineSelection2 = true;
+  baselinePair = true;
+  loosePostSynchMuon1 = true;
+  postSynchMuon2 = true; 
+  ////////////////
+  */
   httEvent->setSelectionBit(SelectionBitsEnum::muonBaselineSelection,muonBaselineSelection1);
   httEvent->setSelectionBit(SelectionBitsEnum::tauBaselineSelection,muonBaselineSelection2);
   httEvent->setSelectionBit(SelectionBitsEnum::baselinePair,baselinePair);

@@ -33,7 +33,6 @@ from ROOT import HMuMuTree
 fileNames = []
 aFile = "file://./HTauTauAnalysis.root"
 fileNames.append(aFile)
-
 print "Adding file: ",aFile
 print "Making the mu*tau tree"
 aROOTFile = TFile.Open(aFile)
@@ -44,7 +43,8 @@ print "Making the tau*tau tree"
 aROOTFile = TFile.Open(aFile)
 aTree = aROOTFile.Get("HTauTauTree/HTauTauTree")
 HTauhTauhTree(aTree,doSvFit).Loop()
-print "Making the mu*mu tree"
+print "Making the mu*mu tree with"
 aROOTFile = TFile.Open(aFile)
 aTree = aROOTFile.Get("HTauTauTree/HTauTauTree")
 HMuMuTree(aTree).Loop()
+

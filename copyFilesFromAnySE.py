@@ -36,11 +36,11 @@ def copyFilesFromSE(sourcePath,destinationPath, user):
                 #if localPath.find(".root")==-1:
                 #    continue
 
-                if localPath.find("WAWMT_")==-1 and localPath.find("WAWTT_")==-1:
-                    continue
-
-                #if localPath.find("WAWMM_")==-1:
+                #if localPath.find("WAWMT_")==-1 and localPath.find("WAWTT_")==-1:
                 #    continue
+
+                if localPath.find("WAWMM_")==-1:
+                    continue
 
                 if(fileCopied(destination)):
                     continue

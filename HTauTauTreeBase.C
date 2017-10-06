@@ -684,10 +684,13 @@ void HTauTauTreeBase::Loop(){
 
    if (fChain == 0) return;
 
-   Long64_t nentries = fChain->GetEntries();
+   bool muonTree = false;//flag to produce a single or double muon tree
+
+   Long64_t nentries = fChain->GetEntries();   
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       Long64_t ientry = LoadTree(jentry);
+      
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
 
@@ -702,11 +705,11 @@ void HTauTauTreeBase::Loop(){
 
       bestPairIndex_ = bestPairIndex;
 
-      if(bestPairIndex<9999){
+      if(bestPairIndex<9999 && !muonTree){
 
 	///Call pairSelection again to set selection bits for the selected pair.
         pairSelection(bestPairIndex);
-		
+
 	fillJets(bestPairIndex);
 	fillLeptons();
 	fillGenLeptons();
@@ -723,6 +726,13 @@ void HTauTauTreeBase::Loop(){
 	hStats->Fill(2);//Number of events saved to ntuple
 	hStats->Fill(3,httEvent->getMCWeight());//Sum of weights saved to ntuple
       }
+    else if(muonTree){
+	fillJets(9999);
+        fillLeptons();
+        warsawTree->Fill();
+        hStats->Fill(2);//Number of events saved to ntuple
+        hStats->Fill(3,httEvent->getMCWeight());//Sum of weights saved to ntuple
+	}
    }
 
    writePropertiesHeader(leptonPropertiesList);
@@ -853,6 +863,10 @@ bool HTauTauTreeBase::jetSelection(unsigned int index, unsigned int bestPairInde
 		     jets_pz->at(index),
 		     jets_e->at(index));
 
+  bool passSelection = aP4.Pt()>20 && std::abs(aP4.Eta())<4.7 &&
+                       PFjetID->at(index)>=1;
+ 
+  if(bestPairIndex<9999){
   TLorentzVector leg1P4(daughters_px->at(indexDau1->at(bestPairIndex)),
 			daughters_py->at(indexDau1->at(bestPairIndex)),
 			daughters_pz->at(indexDau1->at(bestPairIndex)),
@@ -863,10 +877,9 @@ bool HTauTauTreeBase::jetSelection(unsigned int index, unsigned int bestPairInde
 			daughters_pz->at(indexDau2->at(bestPairIndex)),
 			daughters_e->at(indexDau2->at(bestPairIndex)));
 
-  bool passSelection = aP4.Pt()>20 && std::abs(aP4.Eta())<4.7 &&
-  		       aP4.DeltaR(leg1P4) > 0.5 &&
-  		       aP4.DeltaR(leg2P4) > 0.5 &&
-		       PFjetID->at(index)>=1;
+      passSelection &= aP4.DeltaR(leg1P4) > 0.5 &&
+  		       aP4.DeltaR(leg2P4) > 0.5;
+ }
 
   return passSelection;
 }
@@ -982,7 +995,7 @@ void HTauTauTreeBase::fillLeptons(){
     if(std::abs(pdgId)!=13) continue;
     unsigned int muonIDmask = (1<<0);
     bool muonID = (int)aLepton.getProperty(PropertyEnum::muonID) & muonIDmask;
-    if(!muonID) continue;    
+    if(!muonID) continue;            
     */
     /////   
     httLeptonCollection.push_back(aLepton);
@@ -1354,9 +1367,13 @@ void HTauTauTreeBase::computeSvFit(HTTPair &aPair,
   if(covMET[0][0]==0 && covMET[1][0]==0 && covMET[0][1]==0 && covMET[1][1]==0) return; //singular covariance matrix
 
   TLorentzVector p4SVFit = aPair.getP4(HTTAnalysis::NOMINAL);
+  TLorentzVector leg1P4Nominal = leg1.getP4(HTTAnalysis::NOMINAL);
+  TLorentzVector leg2P4Nominal = leg2.getP4(HTTAnalysis::NOMINAL);
+
+  
   if(type==HTTAnalysis::NOMINAL ||
-     leg1.getP4(type)!=leg1.getP4(HTTAnalysis::NOMINAL) ||
-     leg2.getP4(type)!=leg2.getP4(HTTAnalysis::NOMINAL)){
+     leg1.getP4(type)!=leg1P4Nominal ||
+     leg2.getP4(type)!=leg2P4Nominal){
        p4SVFit = runSVFitAlgo(measuredTauLeptons, aMET, covMET);
      }
   aPair.setP4(p4SVFit,type);

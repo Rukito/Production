@@ -83,7 +83,7 @@ def prepareCrabCfg(dataset,
     if dataset.split("/")[2].find("3Jets")!=-1 or dataset.split("/")[2].find("4Jets")!=-1:
         eventsPerJob = 1000
 
-    config.Data.totalUnits =  -1
+    config.Data.totalUnits = -1
     config.Data.lumiMask=""
     if dataset.split("/")[2].find("Run201")!=-1:
         command = "wget "+jsonFile
@@ -105,6 +105,7 @@ from datasetsMoriond17 import datasets
 
 
 ##TEST
+'''
 datasets = [
     #"/SingleMuon/Run2016B-03Feb2017_ver2-v2/MINIAOD",
     #"/SingleMuon/Run2016C-03Feb2017-v1/MINIAOD",
@@ -133,24 +134,14 @@ datasets = [
     #"/SingleMuon/Run2016F-03Feb2017-v1/MINIAOD",
     #"/SingleMuon/Run2016G-03Feb2017-v1/MINIAOD",
     #"/SingleMuon/Run2016H-03Feb2017_ver2-v1/MINIAOD",
-    #"/SingleMuon/Run2016H-03Feb2017_ver3-v1/MINIAOD",    
-    #"/DoubleMuon/Run2016B-03Feb2017_ver2-v2/MINIAOD",
-    #"/DoubleMuon/Run2016C-03Feb2017-v1/MINIAOD",
-    #"/DoubleMuon/Run2016D-03Feb2017-v1/MINIAOD",
-    #"/DoubleMuon/Run2016E-03Feb2017-v1/MINIAOD",
-    #"/DoubleMuon/Run2016F-03Feb2017-v1/MINIAOD",
-    #"/DoubleMuon/Run2016G-03Feb2017-v1/MINIAOD",
-    #"/DoubleMuon/Run2016H-03Feb2017_ver2-v1/MINIAOD",
-    #"/DoubleMuon/Run2016H-03Feb2017_ver3-v1/MINIAOD",
-    #"/GluGluHToZZTo4L_M125_13TeV_powheg2_JHUgenV6_pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",      
+    #"/SingleMuon/Run2016H-03Feb2017_ver3-v1/MINIAOD",
+    ####   
+    #"/GluGluHToZZTo4L_M125_13TeV_powheg2_JHUgenV6_pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",  
 ##"/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v2/MINIAODSIM",
 #"/SUSYGluGluToBBHToTauTau_M-1000_TuneCUETP8M1_13TeV-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"
     #"/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v2/MINIAODSIM"
 ]
-
-
-
-
+'''
 
 ###############
 jsonFileReReco = "https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
@@ -166,7 +157,7 @@ if submitJobs:
                        storage_element="T2_PL_Swierk",
                        publish_data_suffix = "testMB_2")
                        #publish_data_suffix = "v5_MSSM_Synch")
-                       #publish_data_suffix = "4Mu_v5")                  
+                       publish_data_suffix = "4Mu_v5")                  
 ########################################################
 ########################################################
 ## Merge output ROOT files.

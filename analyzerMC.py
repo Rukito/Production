@@ -72,7 +72,7 @@ process.source = cms.Source("PoolSource",
 )
 
 #Limited nEv for testing purposes. -1 to run all events
-process.maxEvents.input = 10000
+process.maxEvents.input = 1000
 #process.source.eventsToProcess = cms.untracked.VEventRange('1:743343') #MET test
 
 # JSON mask for data --> defined in the lumiMask file
