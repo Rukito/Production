@@ -2,7 +2,7 @@ from WMCore.Configuration import Configuration
 config = Configuration()
 
 config.section_("General")
-config.General.requestName = 'WplusHToTauTau_M120'
+config.General.requestName = 'DYJetsToLL_M-50'
 config.General.workArea = 'v1'
 config.General.transferLogs = True
 
@@ -12,14 +12,14 @@ config.JobType.psetName = 'PSet.py'
 config.JobType.sendExternalFolder = True
 
 config.section_("Data")
-config.Data.inputDataset = '/WplusHToTauTau_M120_13TeV_powheg_pythia8/RunIISpring15DR74-Asympt25ns_MCRUN2_74_V9-v1/MINIAODSIM'
+config.Data.inputDataset = '/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer17MiniAOD-92X_upgrade2017_realistic_v10_ext1-v2/MINIAODSIM'
 config.Data.inputDBS = 'global'
 config.Data.splitting = 'FileBased'
 config.Data.unitsPerJob = 2000 #number of files per jobs
 config.Data.totalUnits =  -1 #number of event
-config.Data.outLFNDirBase = '/store/user/akalinow/EnrichedMiniAOD/WplusHToTauTau_M120_v1/'
+config.Data.outLFNDirBase = '/store/user/trudnick/EnrichedMiniAOD/DYJetsToLL_M-50_v1/'
 config.Data.publication = False
-config.Data.outputDatasetTag = 'WplusHToTauTau_M120_v1'
+config.Data.outputDatasetTag = 'DYJetsToLL_M-50_v1'
 
 
 

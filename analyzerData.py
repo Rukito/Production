@@ -74,8 +74,9 @@ process.source = cms.Source("PoolSource",
         #'file:/home/akalinow/scratch/CMS/HiggsCP/Data/SingleMuon/Run2016G-PromptReco-v1/MINIAOD/0667AC34-2464-E611-84CE-02163E011979.root'
         #'file:/home/akalinow/scratch/CMS/HiggsCP/Data/SingleMuon/Run2016G-23Sep2016-v1/MINIAOD/72446D9C-D89C-E611-9060-002590A3C984.root'
         #'file:/home/akalinow/scratch/CMS/HiggsCP/Data/SingleMuon/Run2016E-23Sep2016-v1/MINIAOD/00CFC689-8D8D-E611-9F90-0CC47A13D16E.root'
-        'file:/mnt/home/mbluj/work/data/92X/MINIAOD/Run2017C_SingleMuon_PromptReco-v1/000_299_368_00000_5E4BC918-8C6D-E711-9C2F-02163E012A9F.root',
+        #'file:/mnt/home/mbluj/work/data/92X/MINIAOD/Run2017C_SingleMuon_PromptReco-v1/000_299_368_00000_5E4BC918-8C6D-E711-9C2F-02163E012A9F.root',
         #'file:/mnt/home/mbluj/work/data/92X/MINIAOD/Run2017B_Tau_PromptReco-v2/000_298_996_00000_3E5B73F4-146A-E711-97AD-02163E0144FB.root'
+        'file:/afs/cern.ch/user/t/trudnick/private/CMSSW_9_4_4/src/LLRHiggsTauTau/NtupleProducer/test/Production/40830B42-6BBA-E511-AD16-0CC47A4D7634.root'
     )
 )
 

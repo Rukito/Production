@@ -72,7 +72,7 @@ def prepareCrabCfg(dataset,
     config.General.requestName = shortName
 
     config.Data.inputDataset = dataset
-    config.Data.outLFNDirBase = '/store/user/akalinow/WAWNTuple/'+publish_data_suffix+"/"
+    config.Data.outLFNDirBase = '/store/user/trudnick/WAWNTuple/'+publish_data_suffix+"/"
     config.Data.outputDatasetTag = shortName
     config.Data.inputDBS = 'global'
     config.Data.splitting = 'EventAwareLumiBased'
@@ -123,15 +123,15 @@ if submitJobs:
                        eventsPerJob=eventsPerJob,
                        jsonFile=jsonFile2017,
                        storage_element="T2_PL_Swierk",
-                       publish_data_suffix = "Summer17_SVFit_v2")                  
+                       publish_data_suffix = "Summer17_ANN_v1")                  
 ########################################################
 ########################################################
 ## Merge output ROOT files.
 ########################################################
 if mergeJobs:
     for dataset in datasets:
-        mergeDataset(dataset=dataset, publish_data_suffix = "Summer17_v1",
-                                      outputDir="/home/akalinow/scratch/CMS/HiggsCP/Data/WAWNTuples/2017/NTUPLES_10_10_2017/")
+        mergeDataset(dataset=dataset, publish_data_suffix = "Summer17_ANN_v1",
+                                      outputDir="/afs/cern.ch/user/t/trudnick/private/CMSSW_9_4_4/src/LLRHiggsTauTau/NtupleProducer/test/Production/TEST_OUT")
 
 #for a in v1/*v7_SM*; do crab resubmit -d $a; done
 #for a in v1/*Run2016*v7_SM*; do crab report -d $a; done

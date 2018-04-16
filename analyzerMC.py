@@ -75,8 +75,9 @@ else :
 ### ----------------------------------------------------------------------
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-        'file:/home/akalinow/scratch/CMS/TauID/Data/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/RECOSIMstep_94X_mc2017_realistic_v10_ext1-v1/02350E8C-32F4-E711-89CB-02163E0145CA.root'
+        #'file:/home/akalinow/scratch/CMS/TauID/Data/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/RECOSIMstep_94X_mc2017_realistic_v10_ext1-v1/02350E8C-32F4-E711-89CB-02163E0145CA.root'
 	#'file:/home/akalinow/scratch/CMS/HiggsCP/Data/GluGluHToTauTau_M125_13TeV_powheg_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM/0A93781C-E904-E811-958B-782BCB53A3A4.root'
+        'file:/afs/cern.ch/user/t/trudnick/private/CMSSW_9_4_4/src/LLRHiggsTauTau/NtupleProducer/test/Production/002ABFCA-A0B9-E511-B9BA-0CC47A57CD6A.root'
     )
 )
 
