@@ -123,15 +123,15 @@ if submitJobs:
                        eventsPerJob=eventsPerJob,
                        jsonFile=jsonFile2017,
                        storage_element="T2_PL_Swierk",
-                       publish_data_suffix = "Summer17_ANN_v1")                  
+                       publish_data_suffix = "Summer17_ANN_v2")                  
 ########################################################
 ########################################################
 ## Merge output ROOT files.
 ########################################################
 if mergeJobs:
     for dataset in datasets:
-        mergeDataset(dataset=dataset, publish_data_suffix = "Summer17_ANN_v1",
-                                      outputDir="/afs/cern.ch/user/t/trudnick/private/CMSSW_9_4_4/src/LLRHiggsTauTau/NtupleProducer/test/Production/TEST_OUT")
+        mergeDataset(dataset=dataset, publish_data_suffix = "Summer17_ANN_v2",
+                                      outputDir="/afs/cern.ch/user/t/trudnick/private/CMSSW_9_4_4/src/LLRHiggsTauTau/NtupleProducer/test/Production/Data/Merged/")
 
 #for a in v1/*v7_SM*; do crab resubmit -d $a; done
 #for a in v1/*Run2016*v7_SM*; do crab report -d $a; done
